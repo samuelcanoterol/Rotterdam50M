@@ -1,0 +1,369 @@
+/* ─── TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  --rojo:       #C8102E;   /* rojo selección española */
+  --amarillo:   #FFCD00;   /* amarillo bandera */
+  --verde:      #1a6b3a;   /* verde hierba */
+  --verde-suave:#e8f5ee;
+  --negro:      #0d0d0d;
+  --gris-oscuro:#1c1c1c;
+  --gris-medio: #555;
+  --gris-claro: #f5f5f5;
+  --blanco:     #ffffff;
+
+  --fuente-display: 'Bebas Neue', sans-serif;
+  --fuente-body:    'Inter', sans-serif;
+}
+
+/* ─── RESET BASE ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--fuente-body);
+  background: var(--blanco);
+  color: var(--negro);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── HERO ────────────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--negro);
+  color: var(--blanco);
+  padding: 80px 40px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* línea verde hierba que recorre el hero */
+.hero::after {
+  content: '';
+  display: block;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--verde) 0px,
+    var(--verde) 30px,
+    #2d9b57 30px,
+    #2d9b57 60px
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amarillo);
+  border: 1px solid var(--amarillo);
+  padding: 4px 14px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: var(--fuente-display);
+  font-size: clamp(64px, 12vw, 140px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--blanco);
+  margin-bottom: 16px;
+}
+
+/* la palabra "+50" en rojo */
+.accent { color: var(--rojo); }
+
+.hero-sub {
+  font-size: 1rem;
+  color: #aaa;
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+/* ─── NAVEGACIÓN HERO ─────────────────────────────────────────────────────── */
+.hero-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-nav a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: 2px solid var(--rojo);
+  color: var(--blanco);
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-nav a:hover {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+/* ─── SECCIONES COMUNES ───────────────────────────────────────────────────── */
+.section {
+  padding: 80px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* número grande de sección como marca de agua */
+.section-label {
+  font-family: var(--fuente-display);
+  font-size: 7rem;
+  color: var(--verde-suave);
+  line-height: 1;
+  margin-bottom: -24px; /* se solapa con el título intencionalmente */
+  user-select: none;
+}
+
+.section-title {
+  font-family: var(--fuente-display);
+  font-size: clamp(36px, 5vw, 60px);
+  color: var(--negro);
+  margin-bottom: 48px;
+  position: relative;
+}
+
+/* línea roja bajo el título */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: var(--rojo);
+  margin-top: 12px;
+}
+
+.section-intro {
+  color: var(--gris-medio);
+  margin-top: -32px;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+
+/* ─── SECCIÓN OSCURA (merchandising) ─────────────────────────────────────── */
+.section-dark {
+  background: var(--gris-oscuro);
+  color: var(--blanco);
+  max-width: 100%;
+  padding: 80px 40px;
+}
+
+.section-dark .section-label { color: #2a2a2a; }
+.section-dark .section-title { color: var(--blanco); }
+.section-dark .section-intro { color: #aaa; }
+
+/* ─── TIMELINE (Fechas) ───────────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  border-left: 2px solid var(--verde);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* punto en la línea */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -39px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--verde);
+  border: 3px solid var(--blanco);
+  outline: 2px solid var(--verde);
+}
+
+/* ítem destacado (final) */
+.timeline-item.highlight::before {
+  background: var(--rojo);
+  outline-color: var(--rojo);
+  width: 18px;
+  height: 18px;
+  left: -41px;
+}
+
+.timeline-date {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--verde);
+  white-space: nowrap;
+  padding-top: 4px;
+  min-width: 110px;
+}
+
+.timeline-item.highlight .timeline-date { color: var(--rojo); }
+
+.timeline-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--negro);
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  color: var(--gris-medio);
+}
+
+/* ─── GRID MERCHANDISING ──────────────────────────────────────────────────── */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.merch-card {
+  background: #262626;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 28px 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.merch-card:hover {
+  border-color: var(--rojo);
+  transform: translateY(-4px);
+}
+
+.merch-icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+
+.merch-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blanco);
+  margin-bottom: 8px;
+}
+
+.merch-card p {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+.merch-price {
+  display: inline-block;
+  background: var(--rojo);
+  color: var(--blanco);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 4px 14px;
+  border-radius: 2px;
+}
+
+.merch-contact {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.merch-contact a {
+  color: var(--amarillo);
+  text-decoration: underline;
+}
+
+/* ─── GRID LUGARES ────────────────────────────────────────────────────────── */
+.lugares-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.lugar-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 28px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lugar-card:hover {
+  border-color: var(--verde);
+  box-shadow: 0 4px 20px rgba(26, 107, 58, 0.1);
+}
+
+.lugar-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 10px;
+}
+
+.lugar-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--negro);
+}
+
+.lugar-card p {
+  font-size: 0.88rem;
+  color: var(--gris-medio);
+  margin-bottom: 16px;
+}
+
+.lugar-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--verde);
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.lugar-link:hover { color: var(--rojo); }
+
+/* ─── FOOTER ──────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--negro);
+  color: #666;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.85rem;
+}
+
+.footer-sub {
+  margin-top: 6px;
+  color: #444;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero { padding: 60px 20px 50px; }
+  .section { padding: 60px 20px; }
+  .section-dark { padding: 60px 20px; }
+
+  .timeline { padding-left: 20px; }
+  .timeline-item { flex-direction: column; gap: 6px; }
+  .timeline-date { min-width: unset; }
+
+  .section-label { font-size: 4rem; }
+}
