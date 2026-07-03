@@ -1,4 +1,7 @@
-/* ─── TOKENS ─────────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────────────────────
+   TOKENS
+   Variables globales de color, tipografía y espaciado
+───────────────────────────────────────────────────────────────────────────── */
 :root {
   --rojo:        #C8102E;
   --amarillo:    #FFCD00;
@@ -13,11 +16,13 @@
   --fuente-display: 'Bebas Neue', sans-serif;
   --fuente-body:    'Inter', sans-serif;
 
-  /* espaciado base móvil */
-  --pad: 20px;
+  --pad: 20px; /* espaciado base móvil */
 }
 
-/* ─── RESET ───────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -27,13 +32,15 @@ body {
   color: var(--negro);
   font-size: 15px;
   line-height: 1.6;
-  /* evita overflow horizontal en móvil */
-  overflow-x: hidden;
+  overflow-x: hidden; /* evita scroll horizontal en móvil */
 }
 
 a { color: inherit; text-decoration: none; }
 
-/* ─── HERO ────────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────────────────────────────────────── */
 .hero {
   background: var(--negro);
   color: var(--blanco);
@@ -43,7 +50,7 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-/* franja de hierba */
+/* franja de hierba decorativa */
 .hero::after {
   content: '';
   display: block;
@@ -72,7 +79,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero-title {
   font-family: var(--fuente-display);
-  font-size: 80px;         /* grande pero cabe en móvil */
+  font-size: 80px;
   line-height: 0.95;
   color: var(--blanco);
   margin-bottom: 12px;
@@ -87,14 +94,17 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
 }
 
-/* ─── NAV MÓVIL ───────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   NAV MÓVIL
+   Sticky, scroll horizontal si los items no caben
+───────────────────────────────────────────────────────────────────────────── */
 .mobile-nav {
   display: flex;
-  overflow-x: auto;           /* scroll horizontal si no caben */
+  overflow-x: auto;
   gap: 8px;
   padding: 14px var(--pad);
   background: var(--gris-oscuro);
-  /* esconde la scrollbar pero permite scroll */
   scrollbar-width: none;
   -ms-overflow-style: none;
   position: sticky;
@@ -105,7 +115,7 @@ a { color: inherit; text-decoration: none; }
 .mobile-nav::-webkit-scrollbar { display: none; }
 
 .mobile-nav a {
-  flex-shrink: 0;             /* evita que se compriman */
+  flex-shrink: 0;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -124,17 +134,20 @@ a { color: inherit; text-decoration: none; }
   border-color: var(--rojo);
 }
 
-/* ─── SECCIONES ───────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SECCIONES — base compartida
+───────────────────────────────────────────────────────────────────────────── */
 .section {
   padding: 52px var(--pad);
   background: var(--blanco);
 }
 
-/* secciones alternas con fondo gris muy suave */
 .section-alt {
   background: var(--gris-claro);
 }
 
+/* número grande como marca de agua */
 .section-label {
   font-family: var(--fuente-display);
   font-size: 5rem;
@@ -154,6 +167,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
 }
 
+/* línea roja bajo el título */
 .section-title::after {
   content: '';
   display: block;
@@ -163,14 +177,22 @@ a { color: inherit; text-decoration: none; }
   margin-top: 10px;
 }
 
-/* placeholder para secciones vacías */
 .section-empty {
   color: #bbb;
   font-size: 0.9rem;
   font-style: italic;
 }
 
-/* ─── TIMELINE ────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   01 · NOVEDADES
+───────────────────────────────────────────────────────────────────────────── */
+/* añade aquí los estilos cuando rellenes la sección */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   02 · CALENDARIO DE COMPETICIÓN
+───────────────────────────────────────────────────────────────────────────── */
 .timeline {
   position: relative;
   padding-left: 24px;
@@ -179,12 +201,13 @@ a { color: inherit; text-decoration: none; }
 
 .timeline-item {
   display: flex;
-  flex-direction: column;     /* en móvil, fecha encima del contenido */
+  flex-direction: column;
   gap: 2px;
   margin-bottom: 28px;
   position: relative;
 }
 
+/* punto en la línea */
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -198,6 +221,7 @@ a { color: inherit; text-decoration: none; }
   outline: 2px solid var(--verde);
 }
 
+/* punto especial para el item final */
 .timeline-item.highlight::before {
   background: var(--rojo);
   outline-color: var(--rojo);
@@ -216,6 +240,10 @@ a { color: inherit; text-decoration: none; }
 
 .timeline-item.highlight .timeline-date { color: var(--rojo); }
 
+/* punto amarillo para los partidos */
+.timeline-item.partido::before { background: var(--amarillo); outline-color: var(--amarillo); }
+.timeline-item.partido .timeline-content h3 { color: var(--verde); }
+
 .timeline-content h3 {
   font-size: 0.95rem;
   font-weight: 700;
@@ -228,10 +256,44 @@ a { color: inherit; text-decoration: none; }
   color: var(--gris-medio);
 }
 
-/* ─── UBICACIONES ─────────────────────────────────────────────────────────── */
+/* etiquetas local / visitante */
+.local {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--verde);
+  color: var(--blanco);
+  padding: 1px 7px;
+  border-radius: 2px;
+}
+
+.visitante {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--gris-medio);
+  color: var(--blanco);
+  padding: 1px 7px;
+  border-radius: 2px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   03 · INFORMACIÓN GENERAL
+───────────────────────────────────────────────────────────────────────────── */
+/* añade aquí los estilos cuando rellenes la sección */
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   04 · UBICACIONES
+───────────────────────────────────────────────────────────────────────────── */
 .lugares-grid {
   display: flex;
-  flex-direction: column;     /* en móvil siempre en columna */
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -240,14 +302,11 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   padding: 22px 18px;
-  /* toque de sombra para que destaque sobre el fondo gris */
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   transition: border-color 0.2s;
 }
 
-.lugar-card:active {
-  border-color: var(--verde);
-}
+.lugar-card:active { border-color: var(--verde); }
 
 .lugar-tag {
   font-size: 0.7rem;
@@ -277,11 +336,61 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   color: var(--verde);
   letter-spacing: 0.04em;
-  /* área de toque cómoda en móvil */
-  padding: 8px 0;
+  padding: 8px 0; /* área de toque más grande en móvil */
 }
 
-/* ─── FOOTER ──────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   05 · ENLACES DE INTERÉS
+───────────────────────────────────────────────────────────────────────────── */
+.enlaces-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.enlace-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--gris-claro);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 18px 16px;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.enlace-card:active { border-color: var(--verde); }
+
+.enlace-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.enlace-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--negro);
+  margin-bottom: 2px;
+}
+
+.enlace-card p {
+  font-size: 0.78rem;
+  color: var(--gris-medio);
+}
+
+.enlace-arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+  color: var(--verde);
+  flex-shrink: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────────────────────────────────────── */
 .footer {
   background: var(--negro);
   color: #666;
@@ -295,7 +404,10 @@ a { color: inherit; text-decoration: none; }
   color: #444;
 }
 
-/* ─── DESKTOP (≥ 600px) — mejoras opcionales ──────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESKTOP (≥ 600px)
+───────────────────────────────────────────────────────────────────────────── */
 @media (min-width: 600px) {
   :root { --pad: 40px; }
 
