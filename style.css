@@ -286,7 +286,39 @@ a { color: inherit; text-decoration: none; }
    03 · INFORMACIÓN GENERAL
 ───────────────────────────────────────────────────────────────────────────── */
 /* añade aquí los estilos cuando rellenes la sección */
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--verde-suave);
+  border: 1px solid #c2dfc9;
+  border-radius: 6px;
+  padding: 20px 16px;
+}
+
+.info-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.info-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--verde);
+  margin-bottom: 4px;
+}
+
+.info-card p {
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.5;
+}
 
 /* ─────────────────────────────────────────────────────────────────────────────
    04 · UBICACIONES
