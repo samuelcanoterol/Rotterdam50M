@@ -281,6 +281,20 @@ a { color: inherit; text-decoration: none; }
   border-radius: 2px;
 }
 
+/* resultados de partido */
+.resultado {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 1px 10px;
+  border-radius: 2px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.resultado.victoria { background: var(--verde); color: var(--blanco); }
+.resultado.derrota  { background: var(--rojo);  color: var(--blanco); }
+.resultado.empate   { background: #888;          color: var(--blanco); }
 
 /* ─────────────────────────────────────────────────────────────────────────────
    03 · INFORMACIÓN GENERAL
