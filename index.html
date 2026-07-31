@@ -18,15 +18,9 @@
     <p class="hero-sub">HOCKEY HIERBA</p>
   </header>
 
-  <!-- NAV MÓVIL 
-  <nav class="mobile-nav">
-    <a href="#novedades">Novedades</a>
-    <a href="#calendario">Calendario</a>
-    <a href="#info">Info general</a>
-    <a href="#ubicaciones">Ubicaciones</a>
-    <a href="#enlaces">Enlaces</a>
-  </nav>
-  -->
+<div class="banner-movil">
+  <span>🏑 ¡España +50 termina 9º del mundo en Rotterdam 2026! 🏑 &nbsp;&nbsp;&nbsp;</span>
+</div>
 
   <!-- 1. NOVEDADES 
   <section id="novedades" class="section">
@@ -113,7 +107,7 @@
      <div class="timeline-item partido">
       <div class="timeline-date">31 Jul · 13:00</div>
       <div class="timeline-content">
-        <h3>🇿🇦 Sudáfrica vs  España 🇪🇸</h3>
+        <h3>🇿🇦 Sudáfrica vs  España 🇪🇸<span class="resultado empate">1 - 1</span><span class="penaltis">0 - 2</span></h3>
         <p>HV Victoria · Campo 2 · <span class="visitante">Visitante</span></p>
       </div>
     </div>
@@ -247,6 +241,49 @@
     <p>España +50 · Mundial Hockey Hierba Rotterdam 2026</p>
     <p class="footer-sub">Creador: Samuel Cano Terol</p>
   </footer>
+
+
+<!-- POPUP BIENVENIDA + CONFETI -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <button class="popup-cerrar" id="popup-btn">✕</button>
+    <div class="popup-emoji">🏑</div>
+    <div class="popup-badge">MUNDIAL ROTTERDAM 2026</div>
+    <h2 class="popup-titulo">¡España termina <br> <span class="accent">9º del mundo!</span></h2>
+    <!--<p class="popup-texto">La selección española +50 ha finalizado en el <strong>9º puesto</strong> del Mundial de Hockey Hierba de Rotterdam 2026. Un resultado histórico del que estar muy orgullosos.</p>-->
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script>
+  // confeti global por toda la pantalla, z-index altísimo para que vaya por encima del popup
+  const duration = 4000;
+  const end = Date.now() + duration;
+
+  (function frame() {
+    confetti({
+      particleCount: 6,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: ['#C8102E', '#FFCD00', '#ffffff']
+    });
+    confetti({
+      particleCount: 6,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: ['#C8102E', '#FFCD00', '#ffffff']
+    });
+
+    if (Date.now() < end) requestAnimationFrame(frame);
+  })();
+
+  // cierra popup
+  document.getElementById('popup-btn').addEventListener('click', function () {
+    document.getElementById('popup').style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
